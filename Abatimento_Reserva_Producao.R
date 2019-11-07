@@ -13,7 +13,8 @@ FUNA_Abatimento_Reserva_Producao <-
       lista[[i + 1]] <-
         lista[[i]] - producaoBRUTA_groupBY_PROCESSO(subsAMB = subsAMB,
                                                 processo = processo,
-                                                mina = mina)[1, as.character(i + 1)]
+                                                mina = mina,
+                                                    cpfcnpj = cpfcnpj)[1, as.character(i + 1)]
     }
     do.call('rbind', lista)
   }
