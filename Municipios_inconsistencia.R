@@ -7,15 +7,24 @@ source(file = "./carregamento_Bases_AMB_outras.r")
 # CARREGANDO GEOCOD ----
 
 geocod <- 
-  read.table("D:/Users/humberto.serna/Desktop/CSV_Data/geocod.csv",header = TRUE, sep = ";",quote = "" )[,c(1,2)][,c(1,as.integer(2))]
+  read.table(
+    "D:/Users/humberto.serna/Desktop/CSV_Data/geocod.csv",
+    header = TRUE,
+    sep = ";",
+    quote = "",
+    stringsAsFactors = FALSE
+  )[, c(1, 2)][, c(1, as.integer(2))]
 
 geocod[,1] <- FUNA_minusculas(FUNA_removeAcentos(geocod[,1]))
+
+
+colnames(geocod) <- c("municipio","geocod")
 
 geocod_processo <- 
   spread(left_join(
     unique(reserva_AMB[!reserva_AMB$substancia.amb %in% c("areia", "saibro", "brita e cascalho"), c("processo", "ano", "municipio")]),
     geocod,
-    by = c("municipio" = "NM_MUNICIP_STRING")),key = "ano",value = "CD_GEOCMU_STRING")
+    by = "municipio"),key = "ano",value = "geocod")
 
 # removendo ponto e zeros a esquerda de processos. Para compatibilidade com SIGMINE
 geocod_processo$processo_sigmine <-
@@ -24,7 +33,7 @@ geocod_processo$processo_sigmine <-
 
 
 
-# onde a série acusa mais de 1 município
+# onde a sÃ©rie acusa mais de 1 municÃ­pio
 inconsistencia_municipio <-
   left_join(filter(data.frame(table(
     geocod_processo$processo
@@ -35,32 +44,26 @@ inconsistencia_municipio <-
 colnames(inconsistencia_municipio)[1] <- c("processo")
 
 
-# CARREGANDO INTERSECÇÃO MUNICIPÍOS E POLIGONAIS ----
+# CARREGANDO INTERSECÃ‡ÃƒO MUNICIPÃOS E POLIGONAIS ----
 
 interseccao_poligonais_ibge <-
   read.table(
     "D:/Users/humberto.serna/Desktop/CSV_Data/interseccao_poligonais_ibge2.csv",
-    encoding = "UTF-8",header = TRUE,sep = ";",quote = "", stringsAsFactors = FALSE) 
+    encoding = "UTF-8",header = TRUE,sep = ";", quote = "", stringsAsFactors = FALSE) 
 
 colnames(interseccao_poligonais_ibge) <- c("municipio", "geocod", "processo", "area", "fase", "titular", 
                                            "substancia.ral", "uso", "uf", "areaDeg2", "perimetro")
 
 
-geocod_inner <-
+geocod_AMB.inconsistencia_SIGMINE <-
   inner_join(
     inconsistencia_municipio,
     interseccao_poligonais_ibge[, c(1:4, 6,10)],
     by = c("processo_sigmine" = "processo"))
 
 
-colnames(geocod_inner) <- c("processo", "Freq", "municipio.AMB", "2011", "2012", "2013", 
+colnames(geocod_AMB.inconsistencia_SIGMINE) <- c("processo", "Freq", "municipio.AMB", "2011", "2012", "2013", 
                              "2014", "2015", "2016", "2017", "2018", "processo_sigmine", "municipio.sigmine", 
                              "geocod", "area", "titular", "areaDeg2")
-
-
-
-
-
-
 
 
