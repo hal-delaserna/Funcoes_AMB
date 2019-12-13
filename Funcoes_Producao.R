@@ -54,7 +54,7 @@ producaoBRUTA_GERAL <-
                                      grepl(producaoBRUTA$mina, pattern = mina) == TRUE,], everything()) %>%
                 group_by(ano) %>%
                 summarise(soma = sum(
-                  quantidade.producao.ajuste
+                  quantidade.producao.substancia.ajuste
                 )),
               key = ano,
               value = soma
@@ -142,7 +142,7 @@ producaoBRUTA_groupBY_MINA <-
                                      grepl(producaoBRUTA$mina, pattern = mina) == TRUE,], everything()) %>%
                 group_by(ano, mina) %>%
                 summarise(soma = sum(
-                  quantidade.producao.ajuste
+                  quantidade.producao.substancia.ajuste
                 )),
               key = ano,
               value = soma
@@ -232,7 +232,7 @@ producaoBRUTA_groupBY_MUNICIPIO <-
                                      grepl(producaoBRUTA$mina, pattern = mina) == TRUE,], everything()) %>%
                 group_by(ano, municipio) %>%
                 summarise(soma = sum(
-                  quantidade.producao.ajuste
+                  quantidade.producao.substancia.ajuste
                 )),
               key = ano,
               value = soma
@@ -321,7 +321,7 @@ producaoBRUTA_groupBY_PROCESSO <-
                                      grepl(producaoBRUTA$mina, pattern = mina) == TRUE,], everything()) %>%
                 group_by(ano, processo) %>%
                 summarise(soma = sum(
-                  quantidade.producao.ajuste
+                  quantidade.producao.substancia.ajuste
                 )),
               key = ano,
               value = soma
@@ -411,7 +411,7 @@ producaoBRUTA_groupBY_SUBSTANCIA.AMB <-
                                      grepl(producaoBRUTA$mina, pattern = mina) == TRUE,], everything()) %>%
                 group_by(ano, substancia.amb) %>%
                 summarise(soma = sum(
-                  quantidade.producao.ajuste
+                  quantidade.producao.substancia.ajuste
                 )),
               key = ano,
               value = soma
@@ -501,7 +501,7 @@ producaoBRUTA_groupBY_TITULAR <-
                                      grepl(producaoBRUTA$mina, pattern = mina) == TRUE,], everything()) %>%
                 group_by(ano, cpfcnpj) %>%
                 summarise(soma = sum(
-                  quantidade.producao.ajuste
+                  quantidade.producao.substancia.ajuste
                 )),
               key = ano,
               value = soma
@@ -591,7 +591,7 @@ BeneficiadaPRODUCAO_GERAL <-
                                            grepl(producaoBENEFICIADA$usina, pattern = usina) == TRUE,], everything()) %>%
                 group_by(ano) %>%
                 summarise(soma = sum(
-                  quantidade.producao.ajuste
+                  quantidade.producao.substancia.ajuste
                 )),
               key = ano,
               value = soma
@@ -679,7 +679,7 @@ BeneficiadaPRODUCAO_groupBY_USINA <-
                                            grepl(producaoBENEFICIADA$usina, pattern = usina) == TRUE,], everything()) %>%
                 group_by(ano, mina) %>%
                 summarise(soma = sum(
-                  quantidade.producao.ajuste
+                  quantidade.producao.substancia.ajuste
                 )),
               key = ano,
               value = soma
@@ -769,7 +769,7 @@ BeneficiadaPRODUCAO_groupBY_MUNICIPIO <-
                                            grepl(producaoBENEFICIADA$usina, pattern = usina) == TRUE,], everything()) %>%
                 group_by(ano, municipio) %>%
                 summarise(soma = sum(
-                  quantidade.producao.ajuste
+                  quantidade.producao.substancia.ajuste
                 )),
               key = ano,
               value = soma
@@ -858,7 +858,7 @@ BeneficiadaPRODUCAO_groupBY_PRODUTO <-
                                            grepl(producaoBENEFICIADA$usina, pattern = usina) == TRUE,], everything()) %>%
                 group_by(ano, produto.beneficiado) %>%
                 summarise(soma = sum(
-                  quantidade.producao.ajuste
+                  quantidade.producao.substancia.ajuste
                 )),
               key = ano,
               value = soma
@@ -948,7 +948,7 @@ BeneficiadaPRODUCAO_groupBY_SUBSTANCIA.AMB <-
                                            grepl(producaoBENEFICIADA$usina, pattern = usina) == TRUE,], everything()) %>%
                 group_by(ano, substancia.amb) %>%
                 summarise(soma = sum(
-                  quantidade.producao.ajuste
+                  quantidade.producao.substancia.ajuste
                 )),
               key = ano,
               value = soma
@@ -1038,7 +1038,7 @@ BeneficiadaPRODUCAO_groupBY_TITULAR <-
                                            grepl(producaoBENEFICIADA$usina, pattern = usina) == TRUE,], everything()) %>%
                 group_by(ano, cpfcnpj) %>%
                 summarise(soma = sum(
-                  quantidade.producao.ajuste
+                  quantidade.producao.substancia.ajuste
                 )),
               key = ano,
               value = soma
