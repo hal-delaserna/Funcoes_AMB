@@ -1,4 +1,74 @@
-# FunÃ§Ãµes RESERVA ----
+# Funções RESERVA ----
+
+FUNA_visao_RESERVA <-
+  function(processo = '.',
+           cpfcnpj = '.',
+           mina = '.',
+           subsAMB = '.') {
+    reserva_groupBY_SUBSTANCIA.AMB(
+      processo = processo,
+      cpfcnpj = cpfcnpj,
+      mina = mina,
+      subsAMB = subsAMB
+    ) %>%
+      #FUNA_numerosFormatados() %>%
+      print()
+    reserva_groupBY_MINA(
+      processo = processo,
+      cpfcnpj = cpfcnpj,
+      mina = mina,
+      subsAMB = subsAMB
+    ) %>%
+      #FUNA_numerosFormatados() %>%
+      print()
+    reserva_groupBY_PROCESSO(
+      processo = processo,
+      cpfcnpj = cpfcnpj,
+      mina = mina,
+      subsAMB = subsAMB
+    ) %>%
+      #FUNA_numerosFormatados() %>%
+      print()
+    reserva_groupBY_MUNICIPIO(
+      processo = processo,
+      cpfcnpj = cpfcnpj,
+      mina = mina,
+      subsAMB = subsAMB
+    ) %>%
+      #FUNA_numerosFormatados() %>%
+      print()
+    reserva_groupBY_TITULAR(
+      processo = processo,
+      cpfcnpj = cpfcnpj,
+      mina = mina,
+      subsAMB = subsAMB
+    ) %>%
+      #FUNA_numerosFormatados() %>%
+      print()
+    a <-
+      paste("reserva ", paste(processo, paste(cpfcnpj, paste(mina, subsAMB)))) # título do gráfico
+    reserva_GERAL(
+      processo = processo,
+      cpfcnpj = cpfcnpj,
+      mina = mina,
+      subsAMB = subsAMB
+    ) %>% as.matrix() %>% barplot(main = a)
+    # prodBruta
+    producaoBRUTA_groupBY_SUBSTANCIA.AMB(
+      processo = processo,
+      cpfcnpj = cpfcnpj,
+      mina = mina,
+      subsAMB = subsAMB
+    ) %>%
+      #FUNA_numerosFormatados() %>%
+      print()
+    #eventos
+    if (processo != ".") {
+      FUNA_Eventos_RRR_RFP(processo = processo) %>% print()
+    }
+  }
+
+
 #_____reserva_GERAL
 reserva_GERAL <-
   function(subsAMB = ".",
@@ -505,3 +575,19 @@ reserva_groupBY_TITULAR <-
     }
   }
 
+
+
+
+FUNA_Tabela_Pareto_SPREAD <- function(subsAMB = '.') {
+  x <-
+    spread(
+      reserva_AMB[reserva_AMB$processo %in% reserva_AMB[reserva_AMB$pareto == 1 &
+                                                          reserva_AMB$substancia.amb == subsAMB, c('processo')] &
+                    reserva_AMB$substancia.amb == subsAMB, c('processo', 'ano', 'massa.medida')] %>%
+        group_by(processo, ano) %>% summarise("massa.medida" = sum(massa.medida)),
+      key = "ano",
+      value = "massa.medida",
+      fill = NA
+    )
+  return(x)
+}
