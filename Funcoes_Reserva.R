@@ -577,17 +577,18 @@ reserva_groupBY_TITULAR <-
 
 
 
-
-FUNA_Tabela_Pareto_SPREAD <- function(subsAMB = '.') {
-  x <-
-    spread(
-      reserva_AMB[reserva_AMB$processo %in% reserva_AMB[reserva_AMB$pareto == 1 &
-                                                          reserva_AMB$substancia.amb == subsAMB, c('processo')] &
-                    reserva_AMB$substancia.amb == subsAMB, c('processo', 'ano', 'massa.medida')] %>%
-        group_by(processo, ano) %>% summarise("massa.medida" = sum(massa.medida)),
-      key = "ano",
-      value = "massa.medida",
-      fill = NA
-    )
-  return(x)
-}
+FUNA_Tabela_Pareto_SPREAD <-
+  function(subsAMB = '.') {
+    x <-
+      spread(
+        reserva_AMB[reserva_AMB$processo %in% reserva_AMB[reserva_AMB$pareto == 1 &
+                                                            grepl(x = reserva_AMB$substancia.amb, pattern = subsAMB), c('processo')] &
+                      grepl(x = reserva_AMB$substancia.amb, pattern = subsAMB), c('processo', 'ano', 'massa.medida')] %>%
+          group_by(processo, ano) %>% summarise("massa.medida" = sum(massa.medida)),
+        key = "ano",
+        value = "massa.medida",
+        fill = NA
+      )
+    x <-  x[order(x$`2014`, decreasing = TRUE), ]
+    return(x)
+  }

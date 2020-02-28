@@ -1,4 +1,4 @@
-# FunÃ§Ãµes Consumidores ----
+# Funções Consumidores ----
 
 consumidoresMINA_busca <-
   function(cpfcnpj = ".",
@@ -34,7 +34,6 @@ consumidoresUSINA_busca <-
            subsAMB = ".",
            municipio = ".",
            nome.comprador = ".",
-           municipio.comprador = ".",
            uso.destinacao = ".",
            produto.beneficiado = ".") {
     x <-
@@ -45,8 +44,11 @@ consumidoresUSINA_busca <-
                                  grepl(consumidoresUSINA$substancias.amb.usina, pattern = subsAMB) == TRUE &
                                  grepl(consumidoresUSINA$municipio, pattern = municipio) == TRUE &
                                  grepl(consumidoresUSINA$nome.comprador, pattern = nome.comprador) == TRUE &
-                                 grepl(consumidoresUSINA$municipio.comprador, pattern = municipio.comprador) == TRUE &
                                  grepl(consumidoresUSINA$uso.destinacao, pattern = uso.destinacao) == TRUE &
                                  grepl(consumidoresUSINA$produto.beneficiado, pattern = produto.beneficiado) == TRUE,], everything())
     return(x)
   }
+
+
+
+

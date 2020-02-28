@@ -1,4 +1,4 @@
-# FunÃ§Ãµes PRODUÃ‡ÃƒO BRUTA ----
+# Funções PRODUÇÃO BRUTA ----
 #_____producaoBRUTA_GERAL
 producaoBRUTA_GERAL <-
   function(subsAMB = ".",
@@ -535,7 +535,7 @@ producaoBRUTA_groupBY_TITULAR <-
   }
 
 
-# FunÃ§Ãµes PRODUÃ‡ÃƒO BENEFICIADA ----
+# Funções PRODUÇÃO BENEFICIADA ----
 #_____producaoBENEFICIADA_GERAL
 BeneficiadaPRODUCAO_GERAL <-
   function(subsAMB = ".",
@@ -642,7 +642,7 @@ BeneficiadaPRODUCAO_groupBY_USINA <-
                                        grepl(producaoBENEFICIADA$municipio, pattern = municipio) == TRUE &
                                        grepl(producaoBENEFICIADA$produto.beneficiado, pattern = produto) == TRUE &
                                        grepl(producaoBENEFICIADA$usina, pattern = usina) == TRUE,], everything()) %>%
-            group_by(ano, mina) %>%
+            group_by(ano, usina) %>%
             summarise(soma = sum(quantidade.producao.ajuste)),
           key = ano,
           value = soma
@@ -660,7 +660,7 @@ BeneficiadaPRODUCAO_groupBY_USINA <-
                                          grepl(producaoBENEFICIADA$municipio, pattern = municipio) == TRUE &
                                          grepl(producaoBENEFICIADA$produto.beneficiado, pattern = produto) == TRUE &
                                          grepl(producaoBENEFICIADA$usina, pattern = usina) == TRUE,], everything()) %>%
-              group_by(ano, mina) %>%
+              group_by(ano, usina) %>%
               summarise(soma = sum(quantidade.venda.ajuste)),
             key = ano,
             value = soma
@@ -677,7 +677,7 @@ BeneficiadaPRODUCAO_groupBY_USINA <-
                                            grepl(producaoBENEFICIADA$municipio, pattern = municipio) == TRUE &
                                            grepl(producaoBENEFICIADA$produto.beneficiado, pattern = produto) == TRUE &
                                            grepl(producaoBENEFICIADA$usina, pattern = usina) == TRUE,], everything()) %>%
-                group_by(ano, mina) %>%
+                group_by(ano, usina) %>%
                 summarise(soma = sum(
                   quantidade.producao.substancia.ajuste
                 )),
@@ -696,7 +696,7 @@ BeneficiadaPRODUCAO_groupBY_USINA <-
                                              grepl(producaoBENEFICIADA$municipio, pattern = municipio) == TRUE &
                                              grepl(producaoBENEFICIADA$produto.beneficiado, pattern = produto) == TRUE &
                                              grepl(producaoBENEFICIADA$usina, pattern = usina) == TRUE,], everything()) %>%
-                  group_by(ano, mina) %>%
+                  group_by(ano, usina) %>%
                   summarise(soma = sum(
                     quantidade.venda.substancia.ajuste
                   )),
@@ -1074,7 +1074,7 @@ BeneficiadaPRODUCAO_groupBY_TITULAR <-
 
 
 
-# AvaliaÃ§Ã£o de prioridades por critÃ©rio de Pareto----
+# Avaliação de prioridades por critério de Pareto----
 
 
 
