@@ -71,37 +71,6 @@ FUNA_visao_PRODUCAO_BRUTA <-
   }
 
 
-
-
-
-<<<<<<< HEAD
-=======
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> b6d2dd60b08b04762e754c30b665f5ec8469d6bc
 #_____producaoBRUTA_GERAL
 producaoBRUTA_GERAL <-
   function(subsAMB = ".",
