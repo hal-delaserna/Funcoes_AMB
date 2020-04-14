@@ -74,6 +74,34 @@ FUNA_visao_PRODUCAO_BRUTA <-
 
 
 
+<<<<<<< HEAD
+=======
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> b6d2dd60b08b04762e754c30b665f5ec8469d6bc
 #_____producaoBRUTA_GERAL
 producaoBRUTA_GERAL <-
   function(subsAMB = ".",
@@ -1211,11 +1239,17 @@ BeneficiadaPRODUCAO_groupBY_TITULAR <-
     }
   }
 
+# Avaliação de prioridades por critério de Quantis----
 
+<<<<<<< HEAD
 # Avaliação de prioridades por critério de Quantis----
 
 FUNA_PRODUCAO_Quantil_SPREAD <-
   function(subsAMB = '.', producao = "bruta", GroupBY = 'usina') {
+=======
+FUNA_PRODUCAO_Quantil_SPREAD <-
+  function(subsAMB = '.', producao = "bruta", ID = 'usina') {
+>>>>>>> b6d2dd60b08b04762e754c30b665f5ec8469d6bc
     if (producao == "bruta") {
       x <-
         spread(
@@ -1227,7 +1261,11 @@ FUNA_PRODUCAO_Quantil_SPREAD <-
           value = "Producao_BRUTA",
           fill = NA) 
       return(x)
+<<<<<<< HEAD
     } else if (producao == "beneficiada" & GroupBY == 'municipio') {
+=======
+    } else if (producao == "beneficiada" & ID == 'municipio') {
+>>>>>>> b6d2dd60b08b04762e754c30b665f5ec8469d6bc
         x <-
           spread(
             producaoBENEFICIADA[producaoBENEFICIADA$id_cpfcnpj.municipio %in% producaoBENEFICIADA[producaoBENEFICIADA$pareto == 1 &
