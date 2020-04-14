@@ -35,7 +35,7 @@ consumidoresUSINA_busca <-
            municipio = ".",
            nome.comprador = ".",
            uso.destinacao = ".",
-           produto.beneficiado = ".") {
+           produto = ".") {
     x <-
       select(consumidoresUSINA[grepl(consumidoresUSINA$cpfcnpj, pattern = cpfcnpj) == TRUE &
                                  grepl(consumidoresUSINA$titular, pattern = titular) == TRUE &
@@ -45,10 +45,86 @@ consumidoresUSINA_busca <-
                                  grepl(consumidoresUSINA$municipio, pattern = municipio) == TRUE &
                                  grepl(consumidoresUSINA$nome.comprador, pattern = nome.comprador) == TRUE &
                                  grepl(consumidoresUSINA$uso.destinacao, pattern = uso.destinacao) == TRUE &
-                                 grepl(consumidoresUSINA$produto.beneficiado, pattern = produto.beneficiado) == TRUE,], everything())
+                                 grepl(consumidoresUSINA$produto.beneficiado, pattern = produto) == TRUE,], everything())
     return(x)
   }
 
 
 
 
+
+#_____consumidoresUSINA_preco_MEDIO
+consumidoresUSINA_preco_MEDIO <-
+  function(produto = ".",
+           cpfcnpj = ".",
+           municipio = ".",
+           usina = ".",
+           mediana = "false") {
+    if (mediana == "false") {
+      x <-
+        spread(
+          select(consumidoresUSINA[grepl(consumidoresUSINA$produto.beneficiado, pattern = produto) == TRUE &
+                                     grepl(consumidoresUSINA$cpfcnpj, pattern = cpfcnpj) == TRUE &
+                                     grepl(consumidoresUSINA$municipio, pattern = municipio) == TRUE &
+                                     grepl(consumidoresUSINA$usina, pattern = usina) == TRUE, ], everything()) %>%
+            group_by(ano, produto.beneficiado) %>%
+            summarise(preco_medio = mean(preco)),
+          key = ano,
+          value = preco_medio
+        )
+      return(x)
+    
+  } else {
+    x <-
+      spread(
+        select(consumidoresUSINA[grepl(consumidoresUSINA$produto.beneficiado, pattern = produto) == TRUE &
+                                   grepl(consumidoresUSINA$cpfcnpj, pattern = cpfcnpj) == TRUE &
+                                   grepl(consumidoresUSINA$municipio, pattern = municipio) == TRUE &
+                                   grepl(consumidoresUSINA$usina, pattern = usina) == TRUE, ], everything()) %>%
+          group_by(ano, produto.beneficiado) %>%
+          summarise(preco_mediano = median(preco)),
+        key = ano,
+        value = preco_mediano
+      )
+    return(x)
+  } }
+
+
+
+
+#_____consumidoresMINA_Preco_MEDIO
+consumidoresMINA_Preco_MEDIO <-
+  function(minerio = ".",
+           cpfcnpj = ".",
+           municipio = ".",
+           mina = ".",
+           mediana = "false") {
+    if (mediana == "false") {
+      x <-
+        spread(
+          select(consumidoresMINA[grepl(consumidoresMINA$minerio, pattern = minerio) == TRUE &
+                                     grepl(consumidoresMINA$cpfcnpj, pattern = cpfcnpj) == TRUE &
+                                     grepl(consumidoresMINA$municipio, pattern = municipio) == TRUE &
+                                     grepl(consumidoresMINA$mina, pattern = mina) == TRUE, ], everything()) %>%
+            group_by(ano, minerio) %>%
+            summarise(preco_medio = mean(preco)),
+          key = ano,
+          value = preco_medio
+        )
+      return(x)
+    } else {
+      x <-
+        spread(
+          select(consumidoresMINA[grepl(consumidoresMINA$minerio, pattern = minerio) == TRUE &
+                                     grepl(consumidoresMINA$cpfcnpj, pattern = cpfcnpj) == TRUE &
+                                     grepl(consumidoresMINA$municipio, pattern = municipio) == TRUE &
+                                     grepl(consumidoresMINA$mina, pattern = mina) == TRUE, ], everything()) %>%
+            group_by(ano, minerio) %>%
+            summarise(preco_mediano = median(preco)),
+          key = ano,
+          value = preco_mediano
+        )
+      return(x)
+    }
+  }
+  

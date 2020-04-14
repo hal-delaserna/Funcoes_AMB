@@ -589,6 +589,6 @@ FUNA_Tabela_Pareto_SPREAD <-
         value = "massa.medida",
         fill = NA
       )
-    x <-  x[order(x$`2014`, decreasing = TRUE), ]
+   
     return(x)
   }
