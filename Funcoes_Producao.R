@@ -615,7 +615,7 @@ FUNA_visao_PRODUCAO_BENEFICIADA <-
            subsAMB = '.',
            produto = ".",
            municipio = ".") {
-    BeneficiadaPRODUCAO_groupBY_SUBSTANCIA.AMB(
+    producaoBENEFICIADA_groupBY_SUBSTANCIA.AMB(
       cpfcnpj = cpfcnpj,
       usina = usina,
       municipio = municipio,
@@ -623,7 +623,7 @@ FUNA_visao_PRODUCAO_BENEFICIADA <-
       #produto = produto
     ) %>%
       print()
-    BeneficiadaPRODUCAO_groupBY_USINA(
+    producaoBENEFICIADA_groupBY_USINA(
       cpfcnpj = cpfcnpj,
       subsAMB = subsAMB,
       municipio = municipio,
@@ -631,7 +631,7 @@ FUNA_visao_PRODUCAO_BENEFICIADA <-
       #produto = produto
     ) %>%
       print()
-    #BeneficiadaPRODUCAO_groupBY_PRODUTO(
+    #producaoBENEFICIADA_groupBY_PRODUTO(
     #  cpfcnpj = cpfcnpj,
     #  usina = usina,
     #  subsAMB = subsAMB,
@@ -639,7 +639,7 @@ FUNA_visao_PRODUCAO_BENEFICIADA <-
     #  produto = produto
     #) %>%
     #  print()
-    BeneficiadaPRODUCAO_groupBY_MUNICIPIO(
+    producaoBENEFICIADA_groupBY_MUNICIPIO(
       cpfcnpj = cpfcnpj,
       usina = usina,
       subsAMB = subsAMB,
@@ -647,7 +647,7 @@ FUNA_visao_PRODUCAO_BENEFICIADA <-
       #produto = produto
     ) %>%
       print()
-    BeneficiadaPRODUCAO_groupBY_TITULAR(
+    producaoBENEFICIADA_groupBY_TITULAR(
       cpfcnpj = cpfcnpj,
       usina = usina,
       subsAMB = subsAMB,
@@ -657,7 +657,7 @@ FUNA_visao_PRODUCAO_BENEFICIADA <-
       print()
     a <-
       paste("producaoBENEFICIADA ", paste(paste(cpfcnpj, paste(usina, subsAMB)))) # título do gráfico
-    BeneficiadaPRODUCAO_GERAL(
+    producaoBENEFICIADA_GERAL(
       cpfcnpj = cpfcnpj,
       usina = usina,
       subsAMB = subsAMB,
@@ -676,7 +676,7 @@ FUNA_visao_PRODUCAO_BENEFICIADA <-
 
 
 #_____producaoBENEFICIADA_GERAL
-BeneficiadaPRODUCAO_GERAL <-
+producaoBENEFICIADA_GERAL <-
   function(subsAMB = ".",
            cpfcnpj = ".",
            municipio = ".",
@@ -761,8 +761,8 @@ BeneficiadaPRODUCAO_GERAL <-
     }
   }
 
-#_____BeneficiadaPRODUCAO_groupBY_USINA
-BeneficiadaPRODUCAO_groupBY_USINA <-
+#_____producaoBENEFICIADA_groupBY_USINA
+producaoBENEFICIADA_groupBY_USINA <-
   function(subsAMB = ".",
            subsRAL = ".",
            cpfcnpj = ".",
@@ -851,8 +851,8 @@ BeneficiadaPRODUCAO_groupBY_USINA <-
 
 
 
-#_____BeneficiadaPRODUCAO_groupBY_MUNICIPIO
-BeneficiadaPRODUCAO_groupBY_MUNICIPIO <-
+#_____producaoBENEFICIADA_groupBY_MUNICIPIO
+producaoBENEFICIADA_groupBY_MUNICIPIO <-
   function(subsAMB = ".",
            subsRAL = ".",
            cpfcnpj = ".",
@@ -940,8 +940,8 @@ BeneficiadaPRODUCAO_groupBY_MUNICIPIO <-
   }
 
 
-##_____BeneficiadaPRODUCAO_groupBY_PRODUTO
-#BeneficiadaPRODUCAO_groupBY_PRODUTO <-
+##_____producaoBENEFICIADA_groupBY_PRODUTO
+#producaoBENEFICIADA_groupBY_PRODUTO <-
 #  function(subsAMB = ".",
 #           subsRAL = ".",
 #           cpfcnpj = ".",
@@ -1030,8 +1030,8 @@ BeneficiadaPRODUCAO_groupBY_MUNICIPIO <-
 
 
 
-#_____BeneficiadaPRODUCAO_groupBY_SUBSTANCIA.AMB
-BeneficiadaPRODUCAO_groupBY_SUBSTANCIA.AMB <-
+#_____producaoBENEFICIADA_groupBY_SUBSTANCIA.AMB
+producaoBENEFICIADA_groupBY_SUBSTANCIA.AMB <-
   function(subsAMB = ".",
            subsRAL = ".",
            cpfcnpj = ".",
@@ -1120,8 +1120,8 @@ BeneficiadaPRODUCAO_groupBY_SUBSTANCIA.AMB <-
 
 
 
-#_____BeneficiadaPRODUCAO_groupBY_TITULAR
-BeneficiadaPRODUCAO_groupBY_TITULAR <-
+#_____producaoBENEFICIADA_groupBY_TITULAR
+producaoBENEFICIADA_groupBY_TITULAR <-
   function(subsAMB = ".",
            subsRAL = ".",
            cpfcnpj = ".",
