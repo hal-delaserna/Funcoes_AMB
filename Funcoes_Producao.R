@@ -764,11 +764,11 @@ producaoBENEFICIADA_GERAL <-
 #_____producaoBENEFICIADA_groupBY_USINA
 producaoBENEFICIADA_groupBY_USINA <-
   function(subsAMB = ".",
-           subsRAL = ".",
+           #subsRAL = ".",
            cpfcnpj = ".",
            municipio = ".",
            usina = ".",
-           produto = ".",
+           #produto = ".",
            volume = "producao") {
     if (volume == "producao") {
       x <-
@@ -854,11 +854,11 @@ producaoBENEFICIADA_groupBY_USINA <-
 #_____producaoBENEFICIADA_groupBY_MUNICIPIO
 producaoBENEFICIADA_groupBY_MUNICIPIO <-
   function(subsAMB = ".",
-           subsRAL = ".",
+           #subsRAL = ".",
            cpfcnpj = ".",
            municipio = ".",
            usina = ".",
-           produto = ".",
+           #produto = ".",
            volume = "producao") {
     if (volume == "producao") {
       x <-
@@ -1033,11 +1033,11 @@ producaoBENEFICIADA_groupBY_MUNICIPIO <-
 #_____producaoBENEFICIADA_groupBY_SUBSTANCIA.AMB
 producaoBENEFICIADA_groupBY_SUBSTANCIA.AMB <-
   function(subsAMB = ".",
-           subsRAL = ".",
+           #subsRAL = ".",
            cpfcnpj = ".",
            municipio = ".",
            usina = ".",
-           produto = ".",
+           #produto = ".",
            volume = "producao") {
     if (volume == "producao") {
       x <-
@@ -1123,11 +1123,11 @@ producaoBENEFICIADA_groupBY_SUBSTANCIA.AMB <-
 #_____producaoBENEFICIADA_groupBY_TITULAR
 producaoBENEFICIADA_groupBY_TITULAR <-
   function(subsAMB = ".",
-           subsRAL = ".",
+           #subsRAL = ".",
            cpfcnpj = ".",
            municipio = ".",
            usina = ".",
-           produto = ".",
+           #produto = ".",
            volume = "producao") {
     if (volume == "producao") {
       x <-
@@ -1246,4 +1246,4 @@ FUNA_PRODUCAO_Quantil_SPREAD <-
             fill = NA) 
         return(x)
       }
-    }    
+    }     
