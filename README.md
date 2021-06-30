@@ -1,4 +1,4 @@
 ### Funcoes_AMB
 
 
-Tratam-se de ferramentas internas de trabalho. Pretendo ajustá-las p/ uso tmb com o AMB/Dados Abertos, melhorando a relevância pública.
+São ferramentas internas de trabalho. Futuramente vou ajustá-las p/ uso com o AMB/Dados Abertos (Anuário Mineral Brasileiro), melhorando a relevância pública.
